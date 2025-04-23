@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="result-container {{ 'recommended' if is_recommended else 'not-recommended' }}">
+            <h1>Hosting Recommendation Results</h1>
+            <div class="recommendation">
+                <h2>{{ "Recommended" if is_recommended else "Not Recommended" }}</h2>
+            </div>
+
+            {% if providers and is_recommended %}
+            <div class="providers-list">
+                <h3>Recommended Hosting Providers:</h3>
+                <table class="providers-table">
+                    <tr>
+                        <th>Provider</th>
+                        <th>Cost</th>
+                        <th>Uptime</th>
+                        <th>Storage</th>
+                        <th>Bandwidth</th>
+                    </tr>
+                    {% for provider in providers %}
+                    <tr>
+                        <td>{{ provider.provider }}</td>
+                        <td>${{ "%.2f"|format(provider.cost) }}/mo</td>
+                        <td>{{ "%.2f"|format(provider.uptime) }}%</td>
+                        <td>{{ "Unlimited" if provider.storage >= 999999 else provider.storage|string + "GB" }}</td>
+                        <td>{{ "Unlimited" if provider.bandwidth >= 999999 else provider.bandwidth|string + "GB" }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+
+            <div class="input-summary">
+                <h3>Your Requirements:</h3>
+                <p>Cost: ${{ inputs.cost }}</p>
+                <p>Uptime: {{ inputs.uptime }}%</p>
+                <p>Bandwidth: {{ inputs.bandwidth }} GB</p>
+                <p>Storage: {{ inputs.storage }} GB</p>
+                <p>Tech Stack: {{ "Linux" if inputs.tech_stack == 1 else "Windows" }}</p>
+                <p>Control Panel: {{ "cPanel" if inputs.control_panel == 1 else "Other" }}</p>
+            </div>
+        </div>
+        <a href="/" class="back-link">Back</a>
+    </div>
+</body>
+</html>

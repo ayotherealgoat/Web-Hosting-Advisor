@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hosting Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Web Hosting Advisor</h1>
+        <form action="/recommend" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label>Cost (USD):</label>
+                <input type="number" step="0.01" min="0" max="10" name="cost" required>
+                <div class="helper-text">Enter a value between 0 and 10 USD</div>
+            </div>
+
+            <div class="form-group">
+                <label>Uptime (%):</label>
+                <input type="number" step="0.01" min="99" max="100" name="uptime" required>
+                <div class="helper-text">Enter a value between 99 and 100%</div>
+            </div>
+
+            <div class="form-group">
+                <label>Bandwidth (GB):</label>
+                <input type="number" min="1" max="500" name="bandwidth" required>
+                <div class="helper-text">Enter a value between 1 and 500 GB</div>
+            </div>
+
+            <div class="form-group">
+                <label>Storage (GB):</label>
+                <input type="number" min="1" max="500" name="storage" required>
+                <div class="helper-text">Enter a value between 1 and 500 GB</div>
+            </div>
+
+            <div class="form-group">
+                <label>Tech Stack:</label>
+                <select name="tech_stack" required>
+                    <option value="1">Linux</option>
+                    <option value="0">Windows</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Control Panel:</label>
+                <select name="control_panel" required>
+                    <option value="1">cPanel</option>
+                    <option value="0">Other</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Recommend">
+        </form>
+    </div>
+
+    <script>
+    function validateForm() {
+        const inputs = document.getElementsByTagName('input');
+        for(let input of inputs) {
+            if(input.type === 'number') {
+                const val = parseFloat(input.value);
+                if(isNaN(val) || val < input.min || val > input.max) {
+                    alert(`Please enter a valid number for ${input.name} between ${input.min} and ${input.max}`);
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    </script>
+</body>
+</html>

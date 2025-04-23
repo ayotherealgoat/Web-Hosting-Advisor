@@ -1,0 +1,149 @@
+:root {
+    --primary-color: #007bff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --gray-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.helper-text {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Results Styles */
+.result-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.recommended {
+    background-color: #d4edda;
+    border-left: 5px solid var(--success-color);
+    color: #155724;
+}
+
+.not-recommended {
+    background-color: #f8d7da;
+    border-left: 5px solid var(--danger-color);
+    color: #721c24;
+}
+
+.input-summary {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-link:hover {
+    background-color: #0056b3;
+}
+
+.providers-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.providers-table th,
+.providers-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.providers-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.providers-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.providers-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
